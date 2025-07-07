@@ -6,17 +6,23 @@ This project simulates a **Parking Ticket System** (PTS)that allows for customer
 
 ## 🔧 Configuration
 
-Before using the system, make sure you configure:
+Before using the system, make sure you configure the required environment variables.
+
+### Required `.env` Variables:
 
 - `CURRENCY` — The symbol or name of the currency (e.g., `USD`, `EUR`).
-- `PRICE_PER_MINUTE` — The cost of parking per minute.
+- `PRICE_PER_MINUTE` — The cost charged per minute for parking.
+- `TYPE_MACHINE` — Indicates which machine type to run (e.g., `"1"` for terminal, `"2"` for HTTP, `"3"` for file input).
+- `TIMEOUT` — (in seconds) Optional timeout for simulating user delay or session expiration.
+- `PORT` — The port to use for the HTTP server if using machine type 2.
 
 You can set these values in a `.env` file like this:
 
 ```env
-CURRENCY=$
+CURRENCY=USD
 PRICE_PER_MINUTE=0.5
 TYPE_MACHINE="2"
+TIMEOUT =7
 PORT=3000
 ```
 
