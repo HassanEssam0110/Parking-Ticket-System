@@ -1,0 +1,27 @@
+{
+  "name": "parking-ticket-systems",
+  "version": "1.0.0",
+  "description": "Parking Ticket System that allows for customers to purchase a parking ticket.",
+  "main": "App.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/App.js",
+    "dev": "nodemon  --watch src --ext ts --exec tsx src/App.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@inquirer/prompts": "^7.6.0",
+    "dotenv": "^17.0.1",
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.3",
+    "@types/node": "^24.0.10",
+    "nodemon": "^3.1.10",
+    "tsx": "^4.20.3"
+  }
+}
