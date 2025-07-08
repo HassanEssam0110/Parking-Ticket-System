@@ -1,22 +1,27 @@
-import TicketMachine from "./TicketMachine";
 import { CONFIG } from "./config/config";
+import TicketMachineConsole from "./TicketMachineConsole";
+import TicketMachineAPI from "./TicketmachineAPI";
+import TicketMachineReadFile from "./TicketMachineReadFile";
+import ITicketMachine from "./types/ticket-machine.type";
 
 class App {
   async main() {
     const { CURRENCY, PRICE_PER_MINUTE, TYPE_MACHINE } = CONFIG;
 
-    const ticketMachine = new TicketMachine(CURRENCY, PRICE_PER_MINUTE);
+    let ticketMachine: ITicketMachine;
 
     if (TYPE_MACHINE === "1") {
-      await ticketMachine.startInterActionConsole();
-      ticketMachine.endInterAction();
+      ticketMachine = new TicketMachineConsole(CURRENCY, PRICE_PER_MINUTE);
     } else if (TYPE_MACHINE === "2") {
-      await ticketMachine.startInterActionAPI();
-      ticketMachine.endInterActionAndCloseProgram();
+      ticketMachine = new TicketMachineAPI(CURRENCY, PRICE_PER_MINUTE);
     } else if (TYPE_MACHINE === "3") {
-      await ticketMachine.startInterActionReadFile();
-      ticketMachine.endInterActionAndEmptyFile();
+      ticketMachine = new TicketMachineReadFile(CURRENCY, PRICE_PER_MINUTE);
+    } else {
+      throw new Error("Invalid TYPE_MACHINE");
     }
+
+    await ticketMachine.startInteraction();
+    ticketMachine.endInteraction();
   }
 }
 
